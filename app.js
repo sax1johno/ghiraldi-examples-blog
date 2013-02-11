@@ -16,6 +16,9 @@ var express = require('express');
 var app = express();
 var simpleLogger = require('ghiraldi-simple-logger');
 
+// Create a special framework-level log to show important messages from the framework.
+simpleLogger.LOGLEVELS['Framework message'] = 101;
+
 // Boot the MVC framework and start listening if the boot completes successfully.
 var mvc = require('./mvc');
 
@@ -24,7 +27,10 @@ var bootEventListener = mvc.events();
 
 app.on('boot', function(port) {
     simpleLogger.log('info', "port = " + port);
-    console.log("App server listening on port " + port);
+    // This was turned into a warning so it shows in the default log context (which is debug).  This isn't
+    // a warning so much as it's a high priority informational message.  May warrant a new log context like
+    // framework-message (which is above warning and below error);
+    simpleLogger.log('Framework message', "App server listening on port " + port);
     app.listen(port);
 });
 
