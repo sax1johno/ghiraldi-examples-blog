@@ -1,8 +1,36 @@
 {
     "environment": "development",
-    "development": {
-    },
     "production": {
+        "data": {
+            "provider": "mongodb",
+            "host": "localhost",
+            "database": "blog",
+            "username": "bloguser",
+            "password": "blogpassword"
+        },
+        "appSettings": {
+            "uploadDir": "/public/files",
+            "publicDir": "/public",
+            "sessionSecretSalt": "change_me_to_something_random",
+            "viewsDir": "/views",
+            "viewEngine": "jade"
+        }        
+    },
+    "development": {
+        "data": {
+            "provider": "mongodb",
+            "host": "localhost",
+            "database": "blog",
+            "username": "bloguser",
+            "password": "blogpassword"
+        },
+        "appSettings": {
+            "uploadDir": "/public/files",
+            "publicDir": "/public",
+            "sessionSecretSalt": "change_me_to_something_random",
+            "viewsDir": "/views",
+            "viewEngine": "jade"
+        }
     },
     "staging": {
     }
